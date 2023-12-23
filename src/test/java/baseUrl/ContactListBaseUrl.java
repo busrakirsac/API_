@@ -4,6 +4,8 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 
+import static utils.AuthenticationContactList.generateToken;
+
 public class ContactListBaseUrl {
 
     protected RequestSpecification spec;
@@ -13,7 +15,7 @@ public class ContactListBaseUrl {
 
         spec = new RequestSpecBuilder()
                 .setBaseUri("https://thinking-tester-contact-list.herokuapp.com")
-                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTgzZmE5NTMxNjljZjAwMTMwZTZiN2MiLCJpYXQiOjE3MDMxNDk4ODF9.-XSEYKnbrQ_Vt6fWfMIbuclxXMPe2GNoixPXzyTbz7w")
+                .addHeader("Authorization", "Bearer " + generateToken())
                 .build();
     }
 }

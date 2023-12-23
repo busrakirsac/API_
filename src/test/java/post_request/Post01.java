@@ -1,6 +1,13 @@
 package post_request;
 
-public class Post01 {
+import baseUrl.PetStoreBaseUrl;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.Test;
+
+import static io.restassured.RestAssured.given;
+
+public class Post01 extends PetStoreBaseUrl {
 
      /*
         Given
@@ -31,4 +38,36 @@ public class Post01 {
         And
             Content Type "application/json" olmalı
      */
+
+    @Test
+    public void test01() {
+
+        //Set the URL
+        spec.pathParam("first", "pet");
+
+        //Set the expected data (payLoad)
+        String payLoad ="{\n" +
+                "                \"id\": 0,\n" +
+                "                \"category\": {\n" +
+                "                    \"id\": 0,\n" +
+                "                    \"name\": \"Köpek\"\n" +
+                "                },\n" +
+                "                \"name\": \"Pamuk\",\n" +
+                "                \"photoUrls\": [\n" +
+                "                    \"string\"\n" +
+                "                ],\n" +
+                "                \"tags\": [\n" +
+                "                    {\n" +
+                "                        \"id\": 0,\n" +
+                "                        \"name\": \"Sibirya Kurdu\"\n" +
+                "                    }\n" +
+                "                ],\n" +
+                "                \"status\": \"available\"\n" +
+                "            }";
+
+        //Send the request and get the response
+       Response response = given(spec).body(payLoad).when().post("{first}");
+       response.prettyPrint();
+
+    }
 }
