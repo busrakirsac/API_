@@ -1,22 +1,24 @@
 package pojos.jsonplaceholder;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class JsonPlaceHolderPojo {
 
+
+
     private Integer userId;
-    private Integer id;
     private String title;
-    private boolean completed;
+    private Boolean completed;
 
 
-    public JsonPlaceHolderPojo() {
-    }
-
-
-    public JsonPlaceHolderPojo(Integer userId, Integer id, String title, boolean completed) {
+    public JsonPlaceHolderPojo(Integer userId, String title, Boolean completed) {
         this.userId = userId;
-        this.id = id;
         this.title = title;
         this.completed = completed;
+    }
+
+    public JsonPlaceHolderPojo() {
     }
 
 
@@ -28,14 +30,6 @@ public class JsonPlaceHolderPojo {
         this.userId = userId;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -44,11 +38,11 @@ public class JsonPlaceHolderPojo {
         this.title = title;
     }
 
-    public boolean isCompleted() {
+    public Boolean getCompleted() {
         return completed;
     }
 
-    public void setCompleted(boolean completed) {
+    public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
 
@@ -57,9 +51,9 @@ public class JsonPlaceHolderPojo {
     public String toString() {
         return "JsonPlaceHolderPojo{" +
                 "userId=" + userId +
-                ", id=" + id +
                 ", title='" + title + '\'' +
                 ", completed=" + completed +
                 '}';
     }
+
 }
