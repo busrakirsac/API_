@@ -1,34 +1,17 @@
 package pojos.herokuapp;
 
 public class BookingPojo {
-
-    /*
-    {
-                "firstname" : "Jane",
-                "lastname" : "Doe",
-                "totalprice" : 111,
-                "depositpaid" : true,
-                "bookingdates" : {
-                    "checkin" : "2018-01-01",
-                    "checkout" : "2019-01-01"
-                },
-                "additionalneeds" : "Extra pillows please"
-            }
-     */
-
     private String firstname;
     private String lastname;
     private Integer totalprice;
-    private boolean depositpaid;
+    private Boolean depositpaid;
     private BookingDatesPojo bookingdates;
     private String additionalneeds;
-
 
     public BookingPojo() {
     }
 
-
-    public BookingPojo(String firstname, String lastname, Integer totalprice, boolean depositpaid, BookingDatesPojo bookingdates, String additionalneeds) {
+    public BookingPojo(String firstname, String lastname, Integer totalprice, Boolean depositpaid, BookingDatesPojo bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
@@ -62,11 +45,11 @@ public class BookingPojo {
         this.totalprice = totalprice;
     }
 
-    public boolean isDepositpaid() {
+    public Boolean getDepositpaid() {
         return depositpaid;
     }
 
-    public void setDepositpaid(boolean depositpaid) {
+    public void setDepositpaid(Boolean depositpaid) {
         this.depositpaid = depositpaid;
     }
 
@@ -86,7 +69,6 @@ public class BookingPojo {
         this.additionalneeds = additionalneeds;
     }
 
-
     @Override
     public String toString() {
         return "BookingPojo{" +
@@ -99,3 +81,4 @@ public class BookingPojo {
                 '}';
     }
 }
+
