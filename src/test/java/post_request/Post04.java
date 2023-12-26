@@ -5,8 +5,10 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.herokuapp.BookingDatesPojo;
 import pojos.herokuapp.BookingPojo;
+import pojos.herokuapp.BookingResponsePojo;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Post04 extends HerokuAppBaseUrl {
 
@@ -54,16 +56,23 @@ public class Post04 extends HerokuAppBaseUrl {
         spec.pathParams("first","booking");
 
         //Set the expected data
-        BookingDatesPojo bookingdates = new BookingDatesPojo("2021-09-21","2021-12-21");
-        BookingPojo payload = new BookingPojo("Ali","Can",999,true,bookingdates,"Breakfast");
-        System.out.println(payload);
+        BookingDatesPojo bookingDates = new BookingDatesPojo("2021-09-21","2021-12-21");
+        BookingPojo payLoad = new BookingPojo("Ali","Can",999,true,bookingDates,"Breakfast");
+        System.out.println(payLoad);
 
         //Send the request and get the response
-        Response response = given(spec).body(payload).when().post("{first}");
-      //  response.prettyPrint();
+        Response response = given(spec).body(payLoad).when().post("{first}");
+        response.prettyPrint();
 
         //Do assertions
-        BookingPojo actualData = response.as(BookingPojo.class);
+        BookingResponsePojo actualData = response.as(BookingResponsePojo.class);
+        assertEquals(payLoad.getFirstname(), actualData.getBooking().getFirstname());
+        assertEquals(payLoad.getLastname(), actualData.getBooking().getLastname());
+        assertEquals(payLoad.getTotalprice(), actualData.getBooking().getTotalprice());
+        assertEquals(payLoad.getDepositpaid(), actualData.getBooking().getDepositpaid());
+        assertEquals(bookingDates.getCheckin(), actualData.getBooking().getBookingdates().getCheckin());
+        assertEquals(bookingDates.getCheckout(), actualData.getBooking().getBookingdates().getCheckout());
+        assertEquals(payLoad.getAdditionalneeds(), actualData.getBooking().getAdditionalneeds());
 
     }
 }

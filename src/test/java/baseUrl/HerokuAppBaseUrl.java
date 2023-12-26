@@ -14,6 +14,7 @@ public class HerokuAppBaseUrl {
 
          spec = new RequestSpecBuilder()
                 .setBaseUri("https://restful-booker.herokuapp.com")
+                 .setContentType(ContentType.JSON)
                 .build();
     }
 }
