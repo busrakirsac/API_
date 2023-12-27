@@ -11,14 +11,14 @@ public class AuthenticationHerokuApp {
    //     System.out.println(generateToken());
    // }
 
-    public static String generateToken(){ //post request
 
+    public static String generateToken(){
         String body = "{\n" +
-                "    \"email\": \"aedyn.kewon@fixedfor.com\",\n" +
-                "    \"password\": \"1234567\"\n" +
+                "    \"username\" : \"admin\",\n" +
+                "    \"password\" : \"password123\"\n" +
                 "}";
 
-        Response response = given().body(body).contentType(ContentType.JSON).when().post("https://thinking-tester-contact-list.herokuapp.com/users/login");
+        Response response = given().body(body).contentType(ContentType.JSON).when().post("https://restful-booker.herokuapp.com/auth");
         return response.jsonPath().getString("token");
     }
 }
