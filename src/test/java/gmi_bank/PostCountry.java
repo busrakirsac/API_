@@ -1,6 +1,7 @@
 package gmi_bank;
 
 import baseUrl.GmiBankBaseUrl;
+import org.junit.Test;
 
 public class PostCountry extends GmiBankBaseUrl {
 
@@ -59,5 +60,11 @@ public class PostCountry extends GmiBankBaseUrl {
         }
     */
 
+    @Test
+    public void postCountry() {
 
+        spec.pathParams("first","api","second","tp-countries");
+
+
+    }
 }
