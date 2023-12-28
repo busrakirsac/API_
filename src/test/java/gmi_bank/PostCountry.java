@@ -3,7 +3,7 @@ package gmi_bank;
 import baseUrl.GmiBankBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
-import pojos.gmibank.CountryPojo;
+import pojos.gmibank.PostCountryPojo;
 import pojos.gmibank.StatesPojo;
 
 import java.util.ArrayList;
@@ -84,13 +84,13 @@ public class PostCountry extends GmiBankBaseUrl {
         statesList.add(states3);
 
 
-        CountryPojo payLoad = new CountryPojo("Muz Cumhuriyeti", statesList);
+        PostCountryPojo payLoad = new PostCountryPojo("Muz Cumhuriyeti", statesList);
 
         Response response = given(spec).body(payLoad).when().post("{first}/{second}");
         response.prettyPrint();
 
 
-        CountryPojo actualData = response.as(CountryPojo.class);
+        PostCountryPojo actualData = response.as(PostCountryPojo.class);
         assertEquals(payLoad.getName(), actualData.getName());
         assertEquals(states1.getId(), actualData.getStates().get(0).getId());
         assertEquals(states1.getName(), actualData.getStates().get(0).getName());
